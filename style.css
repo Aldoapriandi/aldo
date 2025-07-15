@@ -1,0 +1,231 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* Latar belakang body yang lebih dinamis untuk efek glassmorphism */
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96); /* Gradien biru-ungu */
+    padding: 20px;
+    box-sizing: border-box;
+    perspective: 1000px;
+    overflow: hidden; /* Penting untuk efek latar belakang */
+}
+
+/* Tambahan untuk latar belakang body yang lebih "liquid" */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(80px); /* Efek blur yang besar */
+}
+
+body::before {
+    background: #FFD700; /* Warna kuning */
+    width: 250px;
+    height: 250px;
+    top: -50px;
+    left: -50px;
+    animation: float1 10s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: #FF6347; /* Warna oranye */
+    width: 300px;
+    height: 300px;
+    bottom: -70px;
+    right: -70px;
+    animation: float2 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float1 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 80px); }
+}
+
+@keyframes float2 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-60px, -40px); }
+}
+
+
+.profile-card {
+    /* Hapus background-color lama dan ganti dengan rgba */
+    background: rgba(255, 255, 255, 0.2); /* Latar belakang semi-transparan */
+    border-radius: 20px;
+    /* Efek blur pada latar belakang */
+    backdrop-filter: blur(10px); /* Efek kaca buram */
+    -webkit-backdrop-filter: blur(10px); /* Untuk kompatibilitas Safari */
+    /* Border tipis transparan */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Bayangan yang lebih lembut */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+    width: 320px;
+    max-width: 100%;
+    height: 480px;
+    position: relative;
+    overflow: hidden;
+
+    /* Gambar profil tetap sebagai background */
+    background-image: url(Me.jpeg); /* GANTI DENGAN URL GAMBAR KAMU! */
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+
+    transition: transform 0.1s ease-out;
+    z-index: 10; /* Pastikan kartu di atas elemen latar belakang body */
+}
+
+/* Gradien putih di bagian bawah untuk membuat teks terlihat jelas */
+/* Sesuaikan opasitas gradien agar tidak terlalu pekat dan tetap terlihat efek kaca */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.5) 30%, rgba(255,255,255,0) 100%);
+    z-index: 1;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.layer {
+    position: relative;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.profile-info h1 {
+    font-size: 26px;
+    margin: 10px 0 5px;
+    color: #333; /* Warna teks tetap gelap agar kontras */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sedikit efek cahaya */
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #555; /* Warna teks tetap gelap agar kontras */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-top: 25px;
+    position: relative;
+    width: 100%;
+}
+
+.social-links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5); /* Garis pembatas lebih transparan */
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    color: #fff; /* Warna ikon tetap putih */
+    font-size: 22px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Background ikon tetap gradien warna-warni */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px); /* Sedikit blur pada ikon juga */
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Warna khusus untuk setiap ikon (tetap sama) */
+.social-icon.facebook { background: linear-gradient(135deg, #3b5998, #2d4373); }
+.social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icon.twitter { background: linear-gradient(135deg, #1DA1F2, #0f8ee9); }
+.social-icon.linkedin { background: linear-gradient(135deg, #0077B5, #005a8b); }
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================================= */
+/* MEDIA QUERIES UNTUK RESPONSIF (tetap sama) */
+/* ================================================================= */
+
+@media (max-width: 768px) {
+    .profile-card {
+        width: 300px;
+        height: 450px;
+    }
+    .profile-info h1 { font-size: 24px; }
+    .profile-info p { font-size: 15px; }
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body { padding: 15px; }
+    .profile-card {
+        width: 90%;
+        height: 400px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .profile-card::before { height: 60%; }
+    .profile-info h1 { font-size: 22px; }
+    .profile-info p { font-size: 14px; }
+    .social-links { gap: 10px; }
+    .social-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+}
+
+/* ================================================================= */
+/* MATIKAN EFEK PARALLAX DI MOBILE (opsional) */
+/* ================================================================= */
+@media (hover: none) and (pointer: coarse) {
+    .profile-card {
+        transform: none !important;
+    }
+    .layer {
+        transform: none !important;
+        transition: none !important;
+    }
+}
