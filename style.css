@@ -6,39 +6,14 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     /* Latar belakang body yang lebih dinamis untuk efek glassmorphism */
-    background: linear-gradient(135deg, #a8c0ff, #3f2b96); /* Gradien biru-ungu */
+    background: linear-gradient(135deg, hsl(0, 0%, 87%), hsl(240, 100%, 99%)); /* Gradien biru-ungu */
     padding: 20px;
     box-sizing: border-box;
     perspective: 1000px;
     overflow: hidden; /* Penting untuk efek latar belakang */
 }
 
-/* Tambahan untuk latar belakang body yang lebih "liquid" */
-body::before, body::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.6;
-    filter: blur(80px); /* Efek blur yang besar */
-}
 
-body::before {
-    background: #FFD700; /* Warna kuning */
-    width: 250px;
-    height: 250px;
-    top: -50px;
-    left: -50px;
-    animation: float1 10s ease-in-out infinite alternate;
-}
-
-body::after {
-    background: #FF6347; /* Warna oranye */
-    width: 300px;
-    height: 300px;
-    bottom: -70px;
-    right: -70px;
-    animation: float2 12s ease-in-out infinite alternate-reverse;
-}
 
 @keyframes float1 {
     0% { transform: translate(0, 0); }
@@ -70,7 +45,7 @@ body::after {
     overflow: hidden;
 
     /* Gambar profil tetap sebagai background */
-    background-image: url(Me.jpeg); /* GANTI DENGAN URL GAMBAR KAMU! */
+    background-image: url(Gibli.jpeg); /* GANTI DENGAN URL GAMBAR KAMU! */
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -123,13 +98,13 @@ body::after {
 .profile-info h1 {
     font-size: 26px;
     margin: 10px 0 5px;
-    color: #333; /* Warna teks tetap gelap agar kontras */
+    color: hsl(0, 0%, 100%); /* Warna teks tetap gelap agar kontras */
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sedikit efek cahaya */
 }
 
 .profile-info p {
     font-size: 16px;
-    color: #555; /* Warna teks tetap gelap agar kontras */
+    color: hsl(0, 0%, 85%); /* Warna teks tetap gelap agar kontras */
 }
 
 .social-links {
